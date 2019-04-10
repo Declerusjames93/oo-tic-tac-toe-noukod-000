@@ -3,15 +3,15 @@ WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
   [6,7,8],
-  
+
   [0,3,6],
   [1,4,7],
   [2,5,8],
-  
+
   [0,4,8],
   [6,4,2]
   ]
-  
+
 # Define your display_board here
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -60,7 +60,7 @@ def turn_count(board)
   counter = 0
   board.each do|element|
     if (element == "X") || (element == "O")
-      counter += 1 
+      counter += 1
     end
   end
   return counter
@@ -85,17 +85,17 @@ def won?(board)
     position_2 = board[win_index_2]
     position_3 = board[win_index_3]
     position_array = [position_1,position_2,position_3]
-    
+
     #tests to see if all of the positions in the array are O's
     choice_O = position_array.all? do|element|
       element == "O"
     end
-    
+
     #tests to see if all of the positions in the array are X's
     choice_X = position_array.all? do|element|
       element == "X"
     end
-    
+
       if ( (position_taken?(board,win_index_1)) && (position_taken?(board,win_index_2)) && (position_taken?(board,win_index_3)) )
         if (choice_X  || choice_O)
          return element
@@ -103,14 +103,14 @@ def won?(board)
       end
   end
     return false
-  
+
 end
 
 #code the draw? method here
 def full?(board)
   #return true if every element in the board contains something
   board.each do |element|
-    if (element == " ") 
+    if (element == " ")
       return false
     end
   end
@@ -134,7 +134,7 @@ end
 #code the winner method here
 def winner(board)
   #return token x or o that won the game
-  
+
   if ( won?(board) )
     position_array = []
     (won?(board)).each do |element|
@@ -152,7 +152,7 @@ def winner(board)
 end
 
 #code the play method here
-def play(board) 
+def play(board)
   while over?(board) == false
     turn(board)
   end
